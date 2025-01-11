@@ -56,7 +56,7 @@ fun AppContent(modifier: Modifier = Modifier) {
                 text = "Player X: $playerXWins   |   Player O: $playerOWins",
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFF37474F)
+                color = MaterialTheme.colorScheme.primary
             )
 
             when {
@@ -68,7 +68,7 @@ fun AppContent(modifier: Modifier = Modifier) {
                     Text(
                         text = "Player $winner wins!",
                         style = MaterialTheme.typography.headlineMedium,
-                        color = Color(0xFF009688)
+                        color = MaterialTheme.colorScheme.secondary
                     )
                     PlayAgainButtons(
                         onPlayAgain = {
@@ -97,7 +97,7 @@ fun AppContent(modifier: Modifier = Modifier) {
                     Text(
                         text = "It's a draw!",
                         style = MaterialTheme.typography.headlineMedium,
-                        color = Color(0xFF8E24AA)
+                        color = MaterialTheme.colorScheme.tertiary
                     )
                     PlayAgainButtons(
                         onPlayAgain = {
@@ -156,15 +156,19 @@ fun WelcomeScreen(onStartGame: () -> Unit) {
     ) {
         Text(
             text = "Welcome to Tic Tac Toe!",
-            style = MaterialTheme.typography.headlineLarge,
-            color = Color(0xFF3F51B5) // Deep Blue
+            style = MaterialTheme.typography.headlineLarge.copy(
+                fontSize = 50.sp,
+                fontWeight = FontWeight.Bold
+            ),
+            color = MaterialTheme.colorScheme.primary,
+            textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = onStartGame,
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E88E5))
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
         ) {
-            Text(text = "Start Game", color = Color.White)
+            Text(text = "Start Game", color = MaterialTheme.colorScheme.onSecondary)
         }
     }
 }
@@ -181,7 +185,7 @@ fun TicTacToeBoard(board: Array<Array<String>>, onCellClick: (Int, Int) -> Unit)
                             .size(100.dp)
                             .padding(4.dp),
                         shape = CircleShape,
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)) // Green
+                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
                     ) {
                         Text(
                             text = board[row][col],
@@ -189,7 +193,7 @@ fun TicTacToeBoard(board: Array<Array<String>>, onCellClick: (Int, Int) -> Unit)
                                 fontSize = 40.sp,
                                 fontWeight = FontWeight.Bold
                             ),
-                            color = Color.White,
+                            color = Color.Black,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -207,15 +211,15 @@ fun PlayAgainButtons(onPlayAgain: () -> Unit, onNewGame: () -> Unit) {
     ) {
         Button(
             onClick = onPlayAgain,
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF43A047))
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
         ) {
-            Text(text = "Play Again", color = Color.White)
+            Text(text = "Play Again", color = MaterialTheme.colorScheme.onSecondary)
         }
         Button(
             onClick = onNewGame,
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD32F2F))
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary)
         ) {
-            Text(text = "New Game", color = Color.White)
+            Text(text = "New Game", color = MaterialTheme.colorScheme.onSecondary)
         }
     }
 }

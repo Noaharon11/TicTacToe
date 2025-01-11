@@ -18,20 +18,23 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFFE91E63), // ורוד כהה
-    secondary = Color(0xFFF48FB1), // ורוד בהיר
-    tertiary = Color(0xFFFFC1E3), // ורוד נוסף
-    background = Color(0xFFFFEBEE), // רקע ורוד בהיר
-    surface = Color(0xFFFCE4EC), // רקע הכפתורים
+    primary = Color(0xFFE91E63),
+    secondary = Color(0xFFF48FB1),
+    tertiary = Color(0xFFFFC1E3),
+    background = Color(0xFFFFEBEE),
+    surface = Color(0xFFFCE4EC),
     onPrimary = Color.White,
-    onSecondary = Color.Black
+    onSecondary = Color.Black,
+    onSurface = Color.Black,
+    onBackground = Color.Black
 )
+
 
 @Composable
 fun TicTacToeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
